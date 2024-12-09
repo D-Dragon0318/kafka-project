@@ -30,7 +30,7 @@ public class ProducerInterceptorTest {
         try {
             producer = new KafkaProducer<>(configMap);
             for ( int i = 0; i < 1; i++ ) {
-                ProducerRecord<String, String> record = new ProducerRecord<String, String>("test", "key" + i, "value" + i);
+                ProducerRecord<String, String> record = new ProducerRecord<String, String>("first-topic", "key" + i, "value" + i);
                 final Future<RecordMetadata> send = producer.send(record);
             }
         } catch ( Exception e ) {

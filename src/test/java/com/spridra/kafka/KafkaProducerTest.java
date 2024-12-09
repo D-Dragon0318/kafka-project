@@ -33,7 +33,7 @@ public class KafkaProducerTest {
         // TODO 准备数据,定义泛型
         //      构造对象时需要传递 【Topic主题名称】，【Key】，【Value】三个参数
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(
-                "first-topic", "0", "value111"
+                "first-topic", "0", "测试一下发送"
         );
         // TODO 生产（发送）数据
         producer.send(record);
