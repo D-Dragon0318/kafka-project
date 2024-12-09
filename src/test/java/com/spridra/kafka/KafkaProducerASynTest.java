@@ -23,20 +23,18 @@ public class KafkaProducerASynTest {
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 "org.apache.kafka.common.serialization.StringSerializer");
         KafkaProducer<String, String> producer = new KafkaProducer<>(configMap);
-        // TODO 循环生产数据
-        for ( int i = 0; i < 1; i++ ) {
-            // TODO 创建数据
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>("first-topic", "key" + i, "value" + i);
-            // TODO 发送数据
+        for ( int i = 0; i < 10; i++ ) {
+            ProducerRecord<String, String> record = new ProducerRecord<String, String>("first-topic", "key-" + i, "value-" + i);
             producer.send(record, new Callback() {
-                // TODO 回调对象
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                     // TODO 当数据发送成功后，会回调此方法
                     System.out.println("数据发送成功：" + recordMetadata.timestamp());
                 }
             });
+            System.out.println("发送数据");
         }
         producer.close();
     }
 }
+
 
